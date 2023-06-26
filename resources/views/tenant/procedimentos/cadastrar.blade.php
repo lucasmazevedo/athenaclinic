@@ -12,7 +12,7 @@
     <form method="POST" enctype="multipart/form-data" id="formData">
         @csrf
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-6">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nome</label>
                     <input type="text" id="name" name="name" class="form-control" placeholder=""
@@ -28,6 +28,15 @@
                         <option value="1">Exame de Imagem</option>
                         <option value="2">Exame de Laboratório</option>
                         <option value="3">Serviços</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label for="captura" class="form-label">Habilitar Captura?</label>
+                    <select id="captura" name="captura" class="form-select">
+                        <option value="0" selected>Não</option>
+                        <option value="1">Sim</option>
                     </select>
                 </div>
             </div>

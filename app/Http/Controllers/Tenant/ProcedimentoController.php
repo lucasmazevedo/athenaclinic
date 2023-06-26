@@ -58,6 +58,7 @@ class ProcedimentoController extends Controller
             $procedimento = new Procedimento();
             $procedimento->tipo = $request->get('tipo');
             $procedimento->name = $request->get('name');
+            $procedimento->captura = $request->get('captura');
             $procedimento->save();
             $convenios = Convenio::all();
             foreach ($convenios as $c) {
@@ -94,6 +95,7 @@ class ProcedimentoController extends Controller
             $procedimentos = Procedimento::findOrFail($id);
             $procedimentos->tipo = $request->get('tipo');
             $procedimentos->name = $request->get('name');
+            $procedimentos->captura = $request->get('captura');
             $procedimentos->update();
             return response()->json(['success' => 'Procedimentos alterado com sucesso', 'data' => $procedimentos]);
         } catch(\Exception $e) {

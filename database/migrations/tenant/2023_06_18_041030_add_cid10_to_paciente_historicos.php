@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pacientes', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('paciente_historicos', function (Blueprint $table) {
+            $table->unsignedBigInteger('cid10_id')->nullable();
+            $table->foreign('cid10_id')->references('id')->on('cid10s')
+                ->onDelete('cascade');
         });
     }
 
@@ -22,6 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pacientes');
+        Schema::table('paciente_historicos', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -19,15 +19,16 @@
                     id="kt_app_header_menu" data-kt-menu="true">
 
                     <div class="menu-item me-0">
-                        <span class="menu-link {{ request()->is('/') ? 'active' : '' }}">
+                        <a class="menu-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home') }}">
                             <span class="menu-icon"><i class="bi bi-speedometer2 fs-3"></i></span>
                             <span class="menu-title">Dashboards</span>
                             <span class="menu-arrow d-lg-none"></span>
-                        </span>
+                        </a>
                     </div>
 
                     <div class="menu-item me-0">
-                        <a class="menu-link" href="">
+                        <a class="menu-link {{ request()->is('agendamentos/espera') ? 'active' : '' }}"
+                            href="{{ route('agendamentos.espera') }}">
                             <span class="menu-icon"><i class="bi bi-people-fill fs-3"></i></span>
                             <span class="menu-title">Espera</span>
                             <span class="menu-arrow d-lg-none"></span>
@@ -35,7 +36,8 @@
                     </div>
 
                     <div class="menu-item me-0">
-                        <a class="menu-link" href="">
+                        <a class="menu-link {{ request()->is('agendamentos') ? 'active' : '' }}"
+                            href="{{ route('agendamentos.index') }}">
                             <span class="menu-icon"><i class="bi bi-calendar3 fs-3"></i></span>
                             <span class="menu-title">Agenda</span>
                             <span class="menu-arrow d-lg-none"></span>
@@ -45,7 +47,7 @@
                     <div data-kt-menu-trigger="{default: 'click', lg: 'click'}" data-kt-menu-placement="bottom-start"
                         class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="bi bi-gear-fill fs-3"></i></span>
+                            <span class="menu-icon"><i class="bi bi-prescription2 fs-3"></i></span>
                             <span class="menu-title">Laboratório</span>
                             <span class="menu-arrow"></span>
                         </span>
@@ -53,21 +55,21 @@
                         <div
                             class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-200px">
                             <div class="menu-item">
-                                <a class="menu-link" href="">
+                                <a class="menu-link" href="{{ route('laboratorio.coleta') }}">
                                     <span class="menu-icon"><i class="bi bi-sliders2 fs-3"></i></span>
                                     <span class="menu-title">Coleta</span>
                                 </a>
                             </div>
 
                             <div class="menu-item">
-                                <a class="menu-link" href="">
+                                <a class="menu-link" href="{{ route('laboratorio.agenda') }}">
                                     <span class="menu-icon"><i class="bi bi-calendar-event-fill fs-3"></i></span>
                                     <span class="menu-title">Agenda</span>
                                 </a>
                             </div>
 
                             <div class="menu-item">
-                                <a class="menu-link" href="">
+                                <a class="menu-link" href="{{ route('laboratorio.relatorios') }}">
                                     <span class="menu-icon"><i class="bi bi-whatsapp fs-3"></i></span>
                                     <span class="menu-title">Relatório</span>
                                 </a>
@@ -78,8 +80,8 @@
                     <div data-kt-menu-trigger="{default: 'click', lg: 'click'}" data-kt-menu-placement="bottom-start"
                         class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0">
                         <span class="menu-link">
-                            <span class="menu-icon"><i class="bi bi-whatsapp fs-3"></i></span>
-                            <span class="menu-title">Módulos</span>
+                            <span class="menu-icon"><i class="bi bi-cash-coin fs-3"></i></span>
+                            <span class="menu-title">Financeiro</span>
                             <span class="menu-arrow"></span>
                         </span>
                         <div
@@ -88,30 +90,20 @@
                             <div data-kt-menu-trigger="{default:'click', lg: 'hover'}"
                                 data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
 
-                                <span class="menu-link">
-                                    <span class="menu-icon"><i class="bi bi-whatsapp fs-3"></i></span>
-                                    <span class="menu-title">Financeiro</span>
-                                    <span class="menu-arrow"></span>
-                                </span>
-                                <div
-                                    class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg px-lg-2 py-lg-4 w-lg-225px">
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Movimento de Caixa</span>
-                                        </a>
-                                    </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ request()->is('financeiro/caixas*') ? 'active' : '' }}"
+                                        href="{{ route('caixas.index') }}">
+                                        <span class="menu-icon"><i class="bi bi-bank fs-3"></i></span>
+                                        <span class="menu-title">Caixas</span>
+                                    </a>
+                                </div>
 
-                                    <div class="menu-item">
-                                        <a class="menu-link" href="">
-                                            <span class="menu-bullet">
-                                                <span class="bullet bullet-dot"></span>
-                                            </span>
-                                            <span class="menu-title">Relatórios</span>
-                                        </a>
-                                    </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ request()->is('relatorios*') ? 'active' : '' }}"
+                                        href="{{ route('caixas.index') }}">
+                                        <span class="menu-icon"><i class="bi bi-list-task fs-3"></i></span>
+                                        <span class="menu-title">Relatórios</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +121,8 @@
                             class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-200px">
 
                             <div class="menu-item">
-                                <a class="menu-link" href="">
+                                <a class="menu-link {{ request()->is('cadastros/pacientes*') ? 'active' : '' }}"
+                                    href="{{ route('pacientes.index') }}">
                                     <span class="menu-icon"><i class="bi bi-people-fill fs-3"></i></span>
                                     <span class="menu-title">Pacientes</span>
                                 </a>
@@ -308,11 +301,13 @@
                         data-kt-menu-placement="bottom-end">
 
                         <div class="d-none d-md-flex flex-column align-items-end justify-content-center me-2 me-md-4">
-                            <span class="fs-7 fw-bold lh-2 text-white">Administrador</span>
-                            <span class="fs-8 fw-semibold lh-1 mb-1 text-white opacity-75">Recepção</span>
+                            <span class="fs-7 fw-bold lh-2 text-white">{{ Auth::user()->profile->nome }}</span>
+                            <span
+                                class="fs-8 fw-semibold lh-1 mb-1 text-white opacity-75">{{ '@' . Auth::user()->username }}</span>
                         </div>
                         <div class="symbol symbol-30px symbol-md-40px">
-                            <img src="{{ global_asset('/assets/media/avatars/300-1.jpg') }}" alt="image">
+                            <div class="symbol-label fs-2 fw-semibold bg-primary text-inverse-primary">
+                                {{ mb_substr(Auth::user()->profile->nome, 0, 1, 'utf-8') }}</div>
                         </div>
                     </div>
 
@@ -321,26 +316,28 @@
                         <div class="menu-item px-3">
                             <div class="menu-content d-flex align-items-center px-3">
                                 <div class="symbol symbol-50px me-5">
-                                    <img alt="Logo" src="{{ global_asset('assets/media/avatars/300-1.jpg') }}" />
+                                    <div class="symbol-label fs-2 fw-semibold bg-primary text-inverse-primary">
+                                        {{ mb_substr(Auth::user()->profile->nome, 0, 1, 'utf-8') }}</div>
                                 </div>
                                 <div class="d-flex flex-column">
-                                    <div class="fw-bold d-flex align-items-center fs-5">Administrador
+                                    <div class="fw-bold d-flex align-items-center fs-5">
+                                        {{ Auth::user()->profile->nome }}
                                     </div>
-                                    <span class="fw-semibold text-muted text-hover-primary fs-7">max@kt.com</span>
                                 </div>
                             </div>
                         </div>
                         <div class="separator my-2"></div>
                         <div class="menu-item px-5">
-                            <a href="/" class="menu-link px-5">My Profile</a>
+                            <a href="/" class="menu-link px-5">Meus Dados</a>
                         </div>
                         <div class="separator my-2"></div>
                         <div class="menu-item px-5">
-                            <a class="menu-link px-5" href=""
+                            <a class="menu-link px-5" href="{{ route('tenant.logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
-                            <form id="logout-form" action="" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ route('tenant.logout') }}" method="POST"
+                                class="d-none">
                                 @csrf
                             </form>
                         </div>

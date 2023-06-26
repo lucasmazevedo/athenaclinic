@@ -38,9 +38,8 @@
                             <tr class="text-muted fw-bold fs-7 gs-2 text-uppercase text-start">
                                 <th class="max-w-25px">Cod.</th>
                                 <th class="min-w-125px">Nome</th>
-                                <th class="min-w-125px">Registro ANS</th>
-                                <th class="min-w-125px">Dias Retorno</th>
-                                <th class="min-w-125px">Limite Diário</th>
+                                <th class="min-w-125px">Dt Nascimento</th>
+                                <th class="min-w-125px">Cadastrado em</th>
                                 <th class="min-w-70px text-end">Ações</th>
                             </tr>
                         </thead>
@@ -81,16 +80,13 @@
                     data: 'id'
                 },
                 {
-                    data: 'name'
+                    data: 'nome'
                 },
                 {
-                    data: 'registro_ans'
+                    data: 'dtnascimento'
                 },
                 {
-                    data: 'dias_retorno'
-                },
-                {
-                    data: 'limite_diario'
+                    data: 'created_at'
                 },
                 {
                     data: 'action',

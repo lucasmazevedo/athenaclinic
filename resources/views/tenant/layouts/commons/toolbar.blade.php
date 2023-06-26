@@ -8,12 +8,23 @@
             </h1>
         </div>
         <div class="d-flex align-items-center overflow-auto">
-            <a data-href="" id="btnModal" class="btn btn-sm btn-danger rounded-pill">
-                <span class="btn-labeled-icon rounded-pill bg-black bg-opacity-20">
-                    <i class="fas fa-building-columns"></i>
-                </span>
-                Fechado
-            </a>
+            @if ($caixa > 0)
+                <a data-href="{{ route('caixas.fechar') }}" id="btnActionModal"
+                    class="btn btn-sm btn-success rounded-pill">
+                    <span class="btn-labeled-icon rounded-pill bg-black bg-opacity-20">
+                        <i class="fas fa-building-columns"></i>
+                    </span>
+                    Aberto
+                </a>
+            @else
+                <a data-href="{{ route('caixas.abrir') }}" id="btnActionModal"
+                    class="btn btn-sm btn-danger rounded-pill">
+                    <span class="btn-labeled-icon rounded-pill bg-black bg-opacity-20">
+                        <i class="fas fa-building-columns"></i>
+                    </span>
+                    Fechado
+                </a>
+            @endif
             <div class="bullet bg-secondary h-35px w-1px mx-5"></div>
             <div class="d-flex align-items-center">
                 <div class="d-flex align-items-center">

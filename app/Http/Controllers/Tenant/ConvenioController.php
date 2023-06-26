@@ -10,7 +10,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
-use SebastianBergmann\CodeCoverage\Util\Percentage;
 use Yajra\DataTables\Facades\DataTables;
 
 class ConvenioController extends Controller
@@ -65,8 +64,7 @@ class ConvenioController extends Controller
             $convenio->porcentagem = $request->get('porcentagem');
             $convenio->save();
             $procedimentos = Procedimento::all();
-            if($convenio->tipo_valores == 0)
-            {
+            if($convenio->tipo_valores == 0) {
                 foreach($procedimentos as $p) {
                     $preco = new Preco();
                     $preco->procedimento_id = $p->id;
@@ -74,9 +72,7 @@ class ConvenioController extends Controller
                     $preco->preco = "0.00";
                     $preco->save();
                 }
-            }
-            elseif($convenio->tipo_valores == 1)
-            {
+            } elseif($convenio->tipo_valores == 1) {
                 foreach($procedimentos as $p) {
                     $preco = new Preco();
                     $preco->procedimento_id = $p->id;
@@ -136,19 +132,16 @@ class ConvenioController extends Controller
         $convenios = Convenio::all();
         $data = $request->all();
         foreach ($data as $key => $value) {
-            if($key != '_token')
-            {
+            if($key != '_token') {
                 $procedimento_id = preg_replace('/[^0-9.]+/', '', $key);
                 $preco = Preco::where('convenio_id', $convenio->id)->where('procedimento_id', $procedimento_id)->first();
                 $valores = explode('_', $key);
-                if($valores[0] == "preco"){
-                    $preco->preco = number_format($this->onlyNumber($value)/100,2, '.', '');
+                if($valores[0] == "preco") {
+                    $preco->preco = number_format($this->onlyNumber($value)/100, 2, '.', '');
                 }
                 $preco->update();
-                foreach($convenios as $c)
-                {
-                    if($c->tipo_valores == 1)
-                    {
+                foreach($convenios as $c) {
+                    if($c->tipo_valores == 1) {
                         $precoNovo = Preco::where('convenio_id', $c->id)->where('procedimento_id', $procedimento_id)->first();
                         $preco_base = Preco::where('convenio_id', 1)->where('procedimento_id', $procedimento_id)->first()->preco;
                         $precoNovo->preco = floatval($preco_base) * ((100-$c->porcentagem) / 100);

@@ -42,6 +42,11 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function showLoginForm()
+    {
+        return view('tenant.auth.login');
+    }
+
     public function username()
     {
         return 'username';
@@ -51,7 +56,7 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             'username' => 'required',
-            'password' => 'required|min:8'
+            'password' => 'required|min:4'
         ]);
 
         $user = User::where($this->username(), $request->{$this->username()})->first();
@@ -97,7 +102,7 @@ class LoginController extends Controller
     {
         $user = auth()->user();
 
-        return 'home';
+        return '/';
 
         // if ($user->user_type == 'Administrador') {
         //     return 'admin';

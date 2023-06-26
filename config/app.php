@@ -160,6 +160,7 @@ return [
          * Package Service Providers...
          */
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -170,6 +171,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\TenancyServiceProvider::class,
+
     ])->toArray(),
 
     /*
@@ -185,6 +187,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
     ])->toArray(),
 
 ];

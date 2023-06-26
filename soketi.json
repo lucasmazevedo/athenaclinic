@@ -1,0 +1,17 @@
+{
+    "debug": true,
+    "port": 6001,
+    "appManager.array.apps": [
+        {
+            "id": "cloudmed_websocket",
+            "key": "cloudmed_websocket",
+            "secret": "lma@88031406",
+            "webhooks": [
+                {
+                    "url": "https://...",
+                    "event_types": ["channel_occupied"]
+                }
+            ]
+        }
+    ]
+}

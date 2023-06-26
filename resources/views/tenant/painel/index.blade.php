@@ -52,7 +52,7 @@
             </div>
 
             <div class="h-20 w-full bg-white p-3 text-center align-middle font-semibold text-white">
-                <span id="lbData" class="text-black"></span>
+                <span id="lbData" class="text-black"></span><br>
                 <span id="lbHora" class="text-4xl text-black"> </span>
 
             </div>

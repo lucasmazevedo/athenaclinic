@@ -13,11 +13,16 @@ use Illuminate\Support\Str;
 
 class PacienteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
+
         if ($request->ajax()) {
             $model = Paciente::select('*')->orderBy('created_at', 'DESC');
             return DataTables::of($model)

@@ -14,7 +14,12 @@ use PDF;
 
 class AtendimentoController extends Controller
 {
-    public function consulta($id) {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function consulta($id)
+    {
         $cid10 = Cid10::take(10)->get();
         $agendamento = Agendamento::findOrFail($id);
         if($agendamento->historico != null) {
@@ -28,7 +33,8 @@ class AtendimentoController extends Controller
         return view('tenant.atendimentos.consulta', compact('cid10', 'agendamento', 'historico'));
     }
 
-    public function salvar_consulta(Request $request, $id) {
+    public function salvar_consulta(Request $request, $id)
+    {
         $historico = PacienteHistorico::find($id);
         $historico->cid10_id = $request->get('cid10');
         $historico->queixa_principal = $request->get('tbQP');
@@ -76,7 +82,8 @@ class AtendimentoController extends Controller
         return response()->json(['success' => 'Sucesso...', 'data' => $doc]);
     }
 
-    public function captura() {
+    public function captura()
+    {
         return view('tenant.painel.index');
     }
 }

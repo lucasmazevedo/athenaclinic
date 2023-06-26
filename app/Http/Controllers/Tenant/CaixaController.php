@@ -17,6 +17,10 @@ use PDF;
 
 class CaixaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -79,10 +83,9 @@ class CaixaController extends Controller
                         return Carbon::parse($row->created_at)->format('d/m/Y');
                     })
                     ->editColumn('descricao', function ($row) {
-                        if($row->agendamento_id)
-                        {
+                        if($row->agendamento_id) {
                             return $row->descricao . " - " . $row->agendamento->paciente->nome;
-                        }else{
+                        } else {
                             return $row->descricao;
                         }
 

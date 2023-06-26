@@ -12,6 +12,10 @@ use Yajra\DataTables\Facades\DataTables;
 
 class Cid10Controller extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -112,14 +116,14 @@ class Cid10Controller extends Controller
     {
         $search = $request->search;
 
-        if($search == ''){
-            $cid10 = Cid10::orderby('name','asc')->select('id','name', 'cod')->limit(5)->get();
-        }else{
-            $cid10 = Cid10::orderby('name','asc')->select('id','name', 'cod')->where('name', 'like', '%' .$search . '%')->limit(5)->get();
+        if($search == '') {
+            $cid10 = Cid10::orderby('name', 'asc')->select('id', 'name', 'cod')->limit(5)->get();
+        } else {
+            $cid10 = Cid10::orderby('name', 'asc')->select('id', 'name', 'cod')->where('name', 'like', '%' .$search . '%')->limit(5)->get();
         }
 
         $response = array();
-        foreach($cid10 as $cid){
+        foreach($cid10 as $cid) {
             $response[] = array(
                 "id"=>$cid->id,
                 "text"=> $cid->cod . " - " . $cid->name

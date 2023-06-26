@@ -12,6 +12,10 @@ use Yajra\DataTables\Facades\DataTables;
 
 class SalaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(Request $request)
     {
         if ($request->ajax()) {

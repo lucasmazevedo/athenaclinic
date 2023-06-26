@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class LaboratorioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function coleta()
     {
         return view('tenant.laboratorio.coleta');

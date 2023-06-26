@@ -18,7 +18,7 @@ return [
      */
     'central_domains' => [
         'clinica.cloudlaudos.com.br',
-        'smt.cloudlaudos.com.br',
+        'cloudlaudos.com.br',
     ],
 
     /**
